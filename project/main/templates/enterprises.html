@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block main %}
+  <div id="app"></div>
+
+  {% render_bundle 'vendors' %}
+  {% render_bundle 'App' %}
+  
+  <script>
+    window.render_components({
+      enterprises: {{ enterprises|safe }},
+      enterprise: {{ enterprise|safe }}
+    });
+  </script>
+{% endblock %}
